@@ -16,9 +16,13 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: npx playwright install --with-deps chromium
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        STD_USER: ${{ secrets.STD_USER }}
+        STD_PASS: ${{ secrets.STD_PASS }}
+    
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
