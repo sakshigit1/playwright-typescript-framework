@@ -23,4 +23,7 @@ export class InventoryPage {
   async expectCartCount(count: string) {
     await expect(this.cartBadge).toHaveText(count);
   }
+    async openCart() {
+    await this.page.locator('.shopping_cart_link').click();
+  }
 }
